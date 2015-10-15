@@ -87,43 +87,5 @@ function hook_ENTITY_TYPE_embed_context_alter(array &$context, \Drupal\Core\Enti
 }
 
 /**
- * Alter the results of an embedded entity build array.
- *
- * This hook is called after the content has been assembled in a structured
- * array and may be used for doing processing which requires that the complete
- * block content structure has been built.
- *
- * @param array &$build
- *   A renderable array representing the embedded entity content.
- * @param \Drupal\Core\Entity\EntityInterface $entity
- *   The embedded entity object.
- * @param array $context
- *   The context array.
- */
-function hook_entity_embed_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, array &$context) {
-  // Remove the contextual links.
-  if (isset($build['#contextual_links'])) {
-    unset($build['#contextual_links']);
-  }
-}
-
-/**
- * Alter the results of the particular embedded entity type build array.
- *
- * @param array &$build
- *   A renderable array representing the embedded entity content.
- * @param \Drupal\Core\Entity\EntityInterface $entity
- *   The embedded entity object.
- * @param array $context
- *   The context array.
- */
-function hook_ENTITY_TYPE_embed_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, array &$context) {
-  // Remove the contextual links.
-  if (isset($build['#contextual_links'])) {
-    unset($build['#contextual_links']);
-  }
-}
-
-/**
  * @} End of "addtogroup hooks".
  */
