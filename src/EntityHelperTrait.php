@@ -193,8 +193,6 @@ trait EntityHelperTrait {
       $context['data-entity-embed-settings'],
       $context
     );
-    // @todo Should this hook get invoked if $build is an empty array?
-    $this->moduleHandler()->alter(array("{$context['data-entity-type']}_embed", 'entity_embed'), $build, $entity, $context);
     $entity_output = $this->renderer()->render($build);
 
     return $entity_output;

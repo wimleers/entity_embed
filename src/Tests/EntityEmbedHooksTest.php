@@ -51,23 +51,6 @@ class EntityEmbedHooksTest extends EntityEmbedTestBase {
    * method.
    */
   public function testEntityEmbedHooks() {
-    // Enable entity_embed_test.module's hook_entity_embed_alter()
-    // implementation and ensure it is working as designed.
-    $this->state->set('entity_embed_test_entity_embed_alter', TRUE);
-    $content = '<div data-entity-type="node" data-entity-uuid="' . $this->node->uuid() . '" data-entity-embed-display="default" data-entity-embed-settings=\'{"view_mode":"teaser"}\'>This placeholder should not be rendered.</div>';
-    $settings = array();
-    $settings['type'] = 'page';
-    $settings['title'] = 'Test hook_entity_embed_alter()';
-    $settings['body'] = array(array('value' => $content, 'format' => 'custom_format'));
-    $node = $this->drupalCreateNode($settings);
-    $this->drupalGet('node/' . $node->id());
-    $this->assertText($this->node->body->value, 'Embedded node exists in page.');
-    $this->assertNoText(strip_tags($content), 'Placeholder does not appears in the output when embed is successful.');
-    // Ensure that embedded node's title has been replaced.
-    $this->assertText('Title set by hook_entity_embed_alter', 'Title of the embedded node is replaced by hook_entity_embed_alter()');
-    $this->assertNoText($this->node->title->value, 'Original title of the embedded node is not visible.');
-    $this->state->set('entity_embed_test_entity_embed_alter', FALSE);
-
     // Enable entity_embed_test.module's hook_entity_embed_context_alter()
     // implementation and ensure it is working as designed.
     $this->state->set('entity_embed_test_entity_embed_context_alter', TRUE);

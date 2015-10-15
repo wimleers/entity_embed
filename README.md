@@ -16,6 +16,8 @@ Allows any entity to be embedded using a WYSIWYG and text format.
 * Add ```<drupal-entity>``` to the 'Allowed HTML tags'
 * To enable the WYSIWYG plugin, move the entity-embed 'E' button into the Active toolbar for the desired text formats from the configuration page: '/admin/config/content/formats'.
 
+If none of the existing view modes match how you want embedded entities to look, or you want the embedded version of a view mode to look slightly different, create a new view mode at `/admin/structure/display-modes/view` and then customize it for a specific entity bundle at its "Manage Display" tab, e.g. `admin/structure/types/manage/article/display`.
+
 ## Technical details
 
 Users should be embedding entities using the CKEditor WYSIWYG button as described above. This section is more technical about the HTML markup that is used to embed the actual entity.
